@@ -654,6 +654,17 @@ func DefaultClassifiers() []Classifier {
 			PURL:    mustPURL("pkg:generic/jq@version"),
 			CPEs:    singleCPE("cpe:2.3:a:jqlang:jq:*:*:*:*:*:*:*:*", cpe.NVDDictionaryLookupSource),
 		},
+		{
+			Class:    "openssh-binary",
+			FileGlob: "**/ssh",
+			EvidenceMatcher: FileContentsVersionMatcher(
+				// NOTE: The portable OpenSSH releases are marked with a 'p' version postfix (e.g. 9.6p1)
+				`\x00OpenSSH_(?P<version>[0-9]+\.[0-9]+)(p[0-9])?\x00`,
+			),
+			Package: "openssh",
+			PURL:    mustPURL("pkg:generic/openssh@version"),
+			CPEs:    singleCPE("cpe:2.3:a:openbsd:openssh:*:*:*:*:*:*:*:*", cpe.NVDDictionaryLookupSource),
+		},
 	}
 }
 
