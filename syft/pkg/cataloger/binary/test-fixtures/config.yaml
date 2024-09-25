@@ -706,3 +706,11 @@ from-images:
       - /usr/bin/avahi-resolve
       - /usr/bin/avahi-publish
       - /usr/bin/avahi-set-host-name
+
+  - name: bash
+    version: 5.2.37
+    images:
+      - ref: bash:latest@sha256:ce062497c248eb1cf4d32927f8c1780cce158d3ed0658c586a5be7308d583cbb
+        platform: linux/amd64
+    paths:
+      - /usr/local/bin/bash

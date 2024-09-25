@@ -684,6 +684,16 @@ func DefaultClassifiers() []Classifier {
 			PURL:    mustPURL("pkg:generic/avahi@version"),
 			CPEs:    singleCPE("cpe:2.3:a:avahi:avahi:*:*:*:*:*:*:*:*", cpe.NVDDictionaryLookupSource),
 		},
+		{
+			Class:    "bash-binary",
+			FileGlob: "**/bash",
+			EvidenceMatcher: FileContentsVersionMatcher(
+				`version (?P<version>[0-9]+\.[0-9]+.[0-9]+)\(`,
+			),
+			Package: "bash",
+			PURL:    mustPURL("pkg:generic/bash@version"),
+			CPEs:    singleCPE("cpe:2.3:a:gnu:bash:*:*:*:*:*:*:*:*", cpe.NVDDictionaryLookupSource),
+		},
 	}
 }
 

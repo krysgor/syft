@@ -1258,6 +1258,17 @@ func Test_Cataloger_PositiveCases(t *testing.T) {
 				Metadata:  metadata("avahi-binary"),
 			},
 		},
+		{
+			logicalFixture: "bash/5.2.37/linux-amd64",
+			expected: pkg.Package{
+				Name:      "bash",
+				Version:   "5.2.37",
+				Type:      "binary",
+				PURL:      "pkg:generic/bash@5.2.37",
+				Locations: locations("bash"),
+				Metadata:  metadata("bash-binary"),
+			},
+		},
 	}
 
 	for _, test := range tests {
